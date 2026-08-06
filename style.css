@@ -1,0 +1,474 @@
+/* ==========================================
+   MASTER DESIGN SYSTEM & BRAND VARIABLES
+   ========================================== */
+   
+:root {
+    /* BRAND COLORS: */
+    --brand-primary: #5B4E3B;       /* Deep bronze/brown from logo text & frame */
+    --brand-secondary: #F4EFE3;     /* Warm parchment brand tint for backgrounds */
+    --text-dark: #332C22;           /* Deep earthy charcoal for readable text */
+    --bg-light: #FAF8F5;            /* Off-white light grey for clean sectioning */
+    
+    /* THE DONATION ACCENT: Highly prominent, organic green from the leaves */
+    --donation-accent: #6E7A55;     /* Leaf green to drive action smoothly */
+    --donation-hover: #5A6544;      /* Slightly deeper green for hover state */
+    --accent-gold: #C2AB87;         /* Warm emblem gold for fine borders/details */
+	--footer-navyblue: #1a202c;
+}
+
+/* Master Reset & Browser Best Practices */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Master Layout: Shared Header & Navigation */
+header {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid var(--accent-gold);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    color: #34495e;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--brand-primary, #2c3e50);
+}
+
+.btn-donate-nav {
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    background: var(--donation-accent, #e74c3c);
+    color: #ffffff !important;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-donate-nav:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo & Brand Layout Alignment */
+.logo-group {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex: 1;
+    max-width: 50%;
+    position: relative; /* Acts as the structural anchor for our floating logo */
+    height: 64px;       /* Firmly locks the header's vertical height tracking */
+}
+
+.logo-img {
+    height: 120px;      /* Significantly upscaled size */
+    width: 120px;       /* Keeps it a perfect, non-oval square */
+    display: block;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 50%; /* Slightly smoother radius to match the larger footprint */
+    background: #ffffff;
+    
+    /* Premium deep shadow so it looks realistically layered over the hero section */
+    box-shadow: 0 12px 20px -8px rgba(0,0,0,0.15), 0 4px 10px -2px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.06);
+    
+    /* The Overlap Magic */
+    position: absolute;
+    top: -1px;         /* Shifts it up slightly to balance the top and bottom hang */
+    left: 0;
+    z-index: 10;        /* Guarantees it floats over the header border and hero background */
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    /* Pushes text right: 110px (logo width) + 24px (breathing room gap) */
+    margin-left: 134px; 
+}
+
+.logo-title {
+    font-family: 'Lato', sans-serif;
+    display: block;
+    font-size: 1.85rem; 
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--brand-primary, #2c3e50);
+    line-height: 1.0; 
+    letter-spacing: -0.5px; 
+    white-space: nowrap;
+}
+
+.logo-tagline {
+    font-family: 'Lato', sans-serif;
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: #7f8c8d;
+    margin-top: 6px;
+}
+
+body {
+    /* Set your primary brand text font (Lato) with system fallback options */
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    /* If Poppins fails to load, it cleanly defaults to a clean system sans-serif */
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    color: var(--brand-primary);
+    font-weight: 700;
+}
+
+/* If you use a serif accent for specific subheadings or callouts: */
+.serif-accent {
+    font-family: 'Crete Round', Georgia, Cambria, "Times New Roman", serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+/* ==========================================
+   UNIFIED SUB-PAGE LAYOUT SYSTEM
+   ========================================== */
+
+/* This outer wrapper is identical on every page to prevent any jumping */
+.sub-page-wrapper {
+    padding: 60px 20px 10px 20px;
+    background-color: var(--brand-secondary);
+    min-height: 77.3vh;
+    box-sizing: border-box;
+}
+
+/* Base style for single full-width cards (About, Supporters) */
+.inner-page-card {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 45px 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--accent-gold, #e5e0d8);
+    box-sizing: border-box;
+	text-align: center;
+}
+
+/* Container for multi-column pages (Donate layout) */
+.sub-page-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+
+/* Individual grid panels on the donate page */
+.sub-page-grid section {
+    flex: 1;
+    min-width: 320px;
+    background: #ffffff;
+    border: 1px solid var(--accent-gold, #e5e0d8);
+    border-radius: 12px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   MOBILE SNAP-TO-ALIGN OVERRIDES
+   ========================================== */
+@media (max-width: 768px) {
+    /* Every page collapses to this exact padding boundary */
+    .sub-page-wrapper {
+        padding: 24px 16px; 
+    }
+
+    /* Standardizes inner text spacings uniformly */
+    .inner-page-card,
+    .sub-page-grid section {
+        padding: 30px 20px;
+        border-radius: 8px;
+    }
+    
+    .sub-page-grid {
+        gap: 20px; /* Tighten grid gap on mobile */
+    }
+}
+
+/* CSS Little People Infographic Icons */
+.css-person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 14px;
+    height: 20px;
+    position: relative;
+}
+
+/* The Head */
+.css-person::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #e0e0e0; /* Default neutral gray */
+    border-radius: 50%;
+    margin-bottom: 2px;
+    display: block;
+}
+
+/* The Torso/Shoulders */
+.css-person div {
+    width: 12px;
+    height: 10px;
+    background: #e0e0e0; /* Default neutral gray */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+/* Highlighted Person Styling (The '1' in the stat ratio) */
+.css-person.active::before {
+    background: var(--brand-primary, #2c3e50); /* Highlights the head in your brand color */
+}
+.css-person.active div {
+    background: var(--brand-primary, #2c3e50); /* Highlights the body in your brand color */
+}
+
+.donation-embed-box {
+    background: #fcfbfa;
+    border: 1px dashed #dcd6cd;
+    border-radius: 8px;
+    padding: 30px 20px;
+    max-width: 450px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+/* ==================
+    TEAM PAGE STYLES
+   ================== */
+   
+	   /* Horizontal Officer Card */
+    .officer-card {
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 2rem;
+      gap: 2rem;
+    }
+    .officer-headshot-wrapper {
+      flex-shrink: 0;
+    }
+    .officer-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #C2AB87;
+      display: block;
+    }
+    .officer-info {
+      flex: 1;
+    }
+    .officer-header {
+      margin-bottom: 0.75rem;
+    }
+    .officer-name {
+      font-size: 1.4rem;
+      color: #5B4E3B;
+      line-height: 1.2;
+    }
+    .officer-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #5B4E3B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 0.25rem;
+    }
+    .officer-email {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #4a5568;
+      text-decoration: none;
+      margin-bottom: 0.75rem;
+    }
+    .officer-email:hover {
+      color: #2e5b37;
+      text-decoration: underline;
+    }
+    .officer-bio {
+      font-size: 0.95rem;
+      color: #4a5568;
+      line-height: 1.6;
+    }
+
+    /* Responsive Mobile Adjustments */
+    @media (max-width: 640px) {
+      .officer-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem;
+        gap: 1rem;
+      }
+      .officer-headshot-wrapper {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+
+
+
+
+/* Master Layout: Shared Footer */
+footer {
+    background: var(--footer-navyblue); /*/#1a202c;*/ /* Darkened variant of brand-primary */
+    color: #D1C9BC;
+    padding: 20px 0 10px 0;
+    font-size: 0.9rem;
+    border-top: 4px solid var(--accent-gold);
+}
+
+footer h3 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+footer p {
+    color: #D1C9BC;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* ==========================================
+   CONSOLIDATED MOBILE RESPONSIVE LAYOUT (768px)
+   ========================================== */
+@media (max-width: 768px) {
+    /* Header & Navigation */
+    header nav.container {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 10px;
+        gap: 15px;
+    }
+
+    .logo-group {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 5px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-img {
+        position: relative;
+        top: 0;
+        margin-bottom: 10px;
+    }
+
+    .logo-text {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        gap: 12px;
+    }
+
+    /* Entire Footer Stack */
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    footer h3, 
+    footer p {
+        text-align: center;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Mobile Layout Adjustments for Hero Section (800px) */
+@media (max-width: 800px) {
+    .hero-text-col {
+        text-align: center;
+    }
+
+    .hero-btn-group {
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hero-btn-group a {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
